@@ -1,0 +1,34 @@
+From a8c88428c8b41e645f12eb862d6ee4bb04f67be3 Mon Sep 17 00:00:00 2001
+From: Jose Luis Rivero <jrivero@honurobotics.com>
+Date: Mon, 12 Oct 2026 12:22:55 +0200
+Subject: [PATCH] Bootstrap PYTHONPATH
+
+ament_package is installed under the install prefix and there is no
+setup.sh until ros_workspace is built, so point PYTHONPATH at the
+prefix's site-packages. Same patch as the ros2-gbp release repositories
+carry on debian/<distro>/ros_workspace.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Signed-off-by: Jose Luis Rivero <jrivero@honurobotics.com>
+---
+ debian/rules.em | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index 284a071..9941d98 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -26,6 +26,10 @@ export DEB_HOST_MULTIARCH := $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+ 
+ DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+ 
++# Needed to bootstrap since the ros_workspace package does not yet exist.
++PYTHON3_VERSION=$(shell py3versions -d)
++export PYTHONPATH=@(InstallationPrefix)/lib/$(PYTHON3_VERSION)/site-packages
++
+ %:
+ 	dh $@@ -v --buildsystem=cmake --builddirectory=.obj-$(DEB_HOST_GNU_TYPE)
+ 
+-- 
+2.53.0
+
