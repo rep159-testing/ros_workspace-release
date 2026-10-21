@@ -2,6 +2,11 @@
 Changelog for package ros_workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.4 (2026-10-16)
+------------------
+* REP 159: chain the setup files of the binary_import parent distributions given in ROS_WORKSPACE_PARENT_PREFIX_PATH
+* Contributors: Jose Luis Rivero
+
 1.0.3 (2023-02-15)
 ------------------
 * Remove path hook generation from ament_environment (`#28 <https://github.com/ros2/ros_workspace/issues/28>`_)
