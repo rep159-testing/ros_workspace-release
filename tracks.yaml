@@ -1,4 +1,4 @@
-release_repo_url: file:///tmp/claude-1000/-home-jrivero-code-my-agents-md-projects-rosdistro-gazebo-buildfarm/7dc0b71b-c32f-4760-91f5-4ccf2f01af07/scratchpad/bloom/bare/ros_workspace-release.git
+release_repo_url: git@github.com:rep159-testing/ros_workspace-release.git
 tracks:
   binext:
     actions:
