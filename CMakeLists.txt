@@ -24,7 +24,7 @@ endif()
 # prefixes of its parents.
 set(AMENT_PACKAGE_DIR "")
 set(_searched "")
-foreach(_prefix "${CMAKE_INSTALL_PREFIX}" ${ROS_WORKSPACE_PARENT_PREFIX_PATH})
+foreach(_prefix "${CMAKE_INSTALL_PREFIX}" ${ROS_WORKSPACE_PARENT_PREFIX_PATH} ${CMAKE_PREFIX_PATH})
   set(_dir "${_prefix}/${PYTHON_INSTALL_DIR}/ament_package")
   list(APPEND _searched "${_dir}")
   if(EXISTS "${_dir}")
